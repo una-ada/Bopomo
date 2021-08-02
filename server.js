@@ -30,7 +30,7 @@ app.use(authConfig);
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 
 /*----- Routers --------------------------------------------------------------*/
-import userRouter from './routes/api/users.js';
+import userRouter from './routes/users.js';
 app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api/users', userRouter);
 app.use((req, res) => 
