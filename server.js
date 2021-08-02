@@ -1,8 +1,8 @@
 /**
  * Main server script.
- * @author Una Ada <una@anarchy.website>l
- * @version 0.1.0
- * @since 0.1.0
+ * @author Una Ada <una@anarchy.website>
+ * @version 2021.08.02
+ * @since 2021.08.02
  * @module server
  */
 import dotenv from 'dotenv';
@@ -23,17 +23,17 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname),
   app = express();
 
 /*----- Middleware -----------------------------------------------------------*/
+import authConfig from './config/auth.js';
 app.use(logger('dev'));
 app.use(express.json());
-app.use(require('./config/auth'));
+app.use(authConfig);
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 
 /*----- Routers --------------------------------------------------------------*/
+import userRouter from './routes/api/users.js';
 app.use(express.static(path.join(__dirname, 'build')));
-app.use('/api/users', require('./routes/api/users'));
-
-// "catch all" route
-app.get('/*', (req, res) =>
+app.use('/api/users', userRouter);
+app.use((req, res) => 
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 );
 
