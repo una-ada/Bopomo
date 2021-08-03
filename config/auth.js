@@ -1,23 +1,20 @@
-const jwt = require('jsonwebtoken');
+/**
+ * JSON Web Token Config
+ * @author Una Ada <una@anarchy.website>
+ * @version 2021.08.02
+ * @since 2021.08.02
+ */
+import jwt from 'jsonwebtoken';
+
 const SECRET = process.env.SECRET;
 
-module.exports = function(req, res, next) {
-  // Check for the token being sent in three different ways
-  let token = req.get('Authorization') || req.query.token || req.body.token;
-  if (token) {
-    // Remove the 'Bearer ' if it was included in the token header
-    token = token.replace('Bearer ', '');
-    // Check if token is valid and not expired
-    jwt.verify(token, SECRET, function(err, decoded) {
-      if (err) {
-        next(err);
-      } else {
-        // It's a valid token, so add user to req
-        req.user = decoded.user;    
-        next();
-      }
-    });
-  } else {
-    next();
-  }
-};
+export default (req, res, next) =>
+  (token =>
+    token
+      ? jwt.verify(token.replace('Bearer ', ''), SECRET, (err, decoded) =>
+          err ? next(err) : (req.user = decoded.user) && next()
+        )
+      : next())(
+    // Define the token in this context
+    req.get('Authorization') || req.query.token || req.body.token
+  );

@@ -10,6 +10,8 @@ import express from 'express';
 import path from 'path';
 import logger from 'morgan';
 import favicon from 'serve-favicon';
+import { createServer } from 'http';
+import Debug from 'debug';
 
 /*----- Initialize -----------------------------------------------------------*/
 dotenv.config();
@@ -20,6 +22,7 @@ dotenv.config();
  * {@link https://techsparx.com/nodejs/esnext/dirname-es-modules.html}
  */
 const __dirname = path.dirname(new URL(import.meta.url).pathname),
+  debug = Debug('bopomo:server'),
   app = express();
 
 /*----- Middleware -----------------------------------------------------------*/
@@ -33,7 +36,7 @@ app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 import userRouter from './routes/users.js';
 app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api/users', userRouter);
-app.use((req, res) => 
+app.use((req, res) =>
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 );
 
