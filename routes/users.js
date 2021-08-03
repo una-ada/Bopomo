@@ -4,7 +4,8 @@
  * @version 2021.08.02
  * @since 2021.08.02
  * @module routes/users
- * @see controllers/users
+ * @see modules:models/user
+ * @see module:controllers/users
  */
 /*----- Imports --------------------------------------------------------------*/
 import { Router } from 'express';
