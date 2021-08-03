@@ -1,16 +1,20 @@
-const mongoose = require('mongoose');
+/**
+ * Server configuration
+ * @author Una Ada <una@anarchy.website>
+ * @version 2021.08.02
+ * @since 2021.08.02
+ */
 
-mongoose.connect(
-  process.env.DATABASE_URL,
-  { useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-  }
-);
+/*----- Imports --------------------------------------------------------------*/
+import mongoose from 'mongoose';
 
-const db = mongoose.connection;
-
-db.on('connected', function() {
-  console.log(`Connected to MongoDB at ${db.host}:${db.port}`);
+/*----- Initialize -----------------------------------------------------------*/
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+});
+mongoose.connection.on('connected', function () {
+  console.log(`Connected to MongoDB at ${this.host}:${this.port}`);
 });
