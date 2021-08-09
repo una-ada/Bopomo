@@ -22,8 +22,10 @@ export default {
     })
       .then(res => {
         if (res.ok) res.json();
-        // This error is too generic, need to add better handling!
-        else throw new Error('Email already taken!');
+        else {
+          res.json().then(issue => console.error(issue));
+          throw new Error('Email taken!');
+        }
       })
       .then(({ token }) => tokenService.setToken(token)),
   login: cred =>

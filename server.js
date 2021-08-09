@@ -27,6 +27,7 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname),
 
 /*----- Middleware -----------------------------------------------------------*/
 import authConfig from './config/auth.js';
+import './config/database.js';
 app.use(logger('dev'));
 app.use(express.json());
 app.use(authConfig);
