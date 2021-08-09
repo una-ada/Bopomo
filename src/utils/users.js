@@ -20,7 +20,11 @@ export default {
       method: 'POST',
       body: user,
     })
-      .then(res => (res.ok ? res.json() : new Error('Email already taken!')))
+      .then(res => {
+        if (res.ok) res.json();
+        // This error is too generic, need to add better handling!
+        else throw new Error('Email already taken!');
+      })
       .then(({ token }) => tokenService.setToken(token)),
   login: cred =>
     fetch(BASE_URL + 'login', {
