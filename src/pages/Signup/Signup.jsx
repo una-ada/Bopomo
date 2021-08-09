@@ -61,7 +61,7 @@ const Signup = props => {
 
   /*----- Template -----------------------------------------------------------*/
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h1>Signup</h1>
       <input
         type="text"
