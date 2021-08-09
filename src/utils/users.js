@@ -8,7 +8,7 @@
  */
 
 /*----- Imports --------------------------------------------------------------*/
-import tokenService from './tokenService';
+import tokenService from './tokens';
 
 /*----- Initialize -----------------------------------------------------------*/
 const BASE_URL = '/api/users/';
@@ -20,7 +20,7 @@ export default {
       method: 'POST',
       body: user,
     })
-      .then(res => (res.ok ? rs.json() : new Error('Email already taken!')))
+      .then(res => (res.ok ? res.json() : new Error('Email already taken!')))
       .then(({ token }) => tokenService.setToken(token)),
   login: cred =>
     fetch(BASE_URL + 'login', {
