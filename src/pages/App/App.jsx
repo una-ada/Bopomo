@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
-import { Signup, Login } from '../pages';
+import { Home, Signup, Login } from '../pages';
+import { Form } from '../../components/components';
 import userService from '../../utils/users';
+
+console.log(Form);
+console.log(Signup);
 
 function App() {
   const [user, setUser] = useState(userService.getUser()),
@@ -21,11 +25,11 @@ function App() {
         <Route exact path="/signup">
           <Signup handleSignUpOrLogin={handleSignUpOrLogin} />
         </Route>
-        {userService.getUser() ? (
+        {user ? (
           <>
             <Switch>
               <Route exact path="/">
-                Home PAGE COMPONENT WOULD GO HEREE
+                <Form.Button />
               </Route>
             </Switch>
           </>

@@ -8,7 +8,7 @@
 /*----- Imports --------------------------------------------------------------*/
 import React, { useState } from 'react';
 import './Signup.css';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import { ErrorMessage, Form } from '../../components/components';
 import userService from '../../utils/users';
 import { useHistory } from 'react-router-dom';
 
@@ -45,19 +45,19 @@ const Signup = props => {
       e.preventDefault();
       const formData = new FormData();
       formData.append('photo', state.file);
-      for(let k in state.form) formData.append(k, state.form[k]);
+      for (let k in state.form) formData.append(k, state.form[k]);
       try {
         await userService.signup(formData);
         props.handleSignUpOrLogin();
         history.push('/');
-      } catch(err){
+      } catch (err) {
         console.error(err.message);
         setState({
           ...state,
-          error: err.message
-        })
+          error: err.message,
+        });
       }
-    }
+    };
 
   /*----- Template -----------------------------------------------------------*/
   return (
@@ -110,6 +110,8 @@ const Signup = props => {
       />
       <input type="submit" className="btn" value="Signup" />
       {state.error && <ErrorMessage error={state.error} />}
+      <Form />
+      <Form.Button />
     </form>
   );
 };
