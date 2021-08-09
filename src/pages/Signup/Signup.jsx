@@ -40,7 +40,24 @@ const Signup = props => {
       setState({
         ...state,
         file: e.target.files[0],
-      });
+      }),
+    handleSubmit = async e => {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('photo', state.file);
+      for(let k in state.form) formData.append(k, state.form[k]);
+      try {
+        await userService.signup(formData);
+        props.handleSignUpOrLogin();
+        history.push('/');
+      } catch(err){
+        console.error(err.message);
+        setState({
+          ...state,
+          error: err.message
+        })
+      }
+    }
 
   /*----- Template -----------------------------------------------------------*/
   return (
