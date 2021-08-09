@@ -39,8 +39,7 @@ export default {
         console.log(user);
         try {
           await user.save();
-          const token = createJWT(user);
-          res.json({ token });
+          res.json({ token: createJWT(user) });
         } catch (err) {
           console.error(err);
           res.status(400).json(err);

@@ -21,11 +21,8 @@ export default {
       body: user,
     })
       .then(res => {
-        if (res.ok) res.json();
-        else {
-          res.json().then(issue => console.error(issue));
-          throw new Error('Email taken!');
-        }
+        if (res.ok) return res.json();
+        else throw new Error('Email taken!');
       })
       .then(({ token }) => tokenService.setToken(token)),
   login: cred =>
@@ -34,7 +31,10 @@ export default {
       headers: new Headers({ 'Content-Type': 'application/json' }),
       body: JSON.stringify(cred),
     })
-      .then(res => (res.ok ? res.json() : new Error('Bad Credentials!')))
+      .then(res => {
+        if (res.ok) return res.json();
+        else throw new Error('Bad Credentials!');
+      })
       .then(({ token }) => tokenService.setToken(token)),
   logout: _ => tokenService.removeToken(),
   getUser: _ => tokenService.getUserFromToken(),
