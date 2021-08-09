@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
-import userService from '../../utils/userService';
+import userService from '../../utils/users';
 
 
 export default function LoginPage(props){

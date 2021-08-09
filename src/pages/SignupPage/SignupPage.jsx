@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
-import userService from '../../utils/userService';
+import userService from '../../utils/users';
 import { useHistory } from 'react-router-dom';
 
 
