@@ -14,22 +14,28 @@ import { Redirect, Route } from 'react-router-dom';
 import userService from './users';
 
 /*----- Helper Functions -----------------------------------------------------*/
-const authCtx = createContext(),
-  useProvideAuth = () => {
-    const [user, setUser] = useState(userService.getUser());
-    return {
-      user,
-      login: next => {
-        setUser(userService.getUser());
-        next();
-      },
-      logout: next => {
-        userService.logout();
-        setUser({ user: null });
-        next();
-      },
-    };
+const authCtx = createContext();
+export function useProvideAuth() {
+  const [user, setUser] = useState(userService.getUser());
+  return {
+    user,
+    login: cred =>
+      new Promise(async (resolve, reject) => {
+        try {
+          await userService.login(cred);
+          setUser(userService.getUser());
+          resolve();
+        } catch (err) {
+          reject(err);
+        }
+      }),
+    logout: next => {
+      userService.logout();
+      setUser({ user: null });
+      next();
+    },
   };
+}
 export function useAuth() {
   return useContext(authCtx);
 }

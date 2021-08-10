@@ -10,11 +10,7 @@ import React from 'react';
 import './Button.css';
 
 const Button = props => (
-  <input
-    {...props}
-    type="button"
-    className="form__button"
-  />
+  <input type="button" className="form__button" {...props} />
 );
 
 /*----- Exports --------------------------------------------------------------*/
