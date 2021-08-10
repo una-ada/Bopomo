@@ -26,10 +26,8 @@ const Login = () => {
       }),
     handleSubmit = async e => {
       e.preventDefault();
-      const form = new FormData();
-      for (let k in state.form) form.append(k, state.form[k]);
       auth
-        .login(form)
+        .login(state.form)
         .then(() => history.push('/'))
         .catch(err => {
           console.error(err.message);
