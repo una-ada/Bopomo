@@ -12,13 +12,11 @@ import { useAuth } from '../../utils/auth';
 import './Nav.css';
 
 const Nav = () => {
-  const auth = useAuth(),
-    history = useHistory(),
-    handleLogout = () => auth.logout().then(() => history.push('/login'));
+  const auth = useAuth();
   return (
     <nav>
       {auth.user ? (
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={auth.logout}>Logout</button>
       ) : (
         <Link to="/login">
           <button>Login</button>
