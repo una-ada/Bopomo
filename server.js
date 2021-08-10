@@ -31,7 +31,7 @@ import './config/database.js';
 app.use(logger('dev'));
 app.use(express.json());
 app.use(authConfig);
-app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'build', 'logo--favicon.svg')));
 
 /*----- Routers --------------------------------------------------------------*/
 import userRouter from './routes/users.js';
