@@ -9,3 +9,7 @@
   width: 100%;
   z-index: 200;
 }
+.card--lifted {
+  box-shadow: var(--shadow-8pd);
+  z-index: 800;
+}

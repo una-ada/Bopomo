@@ -1,5 +1,7 @@
 .form__button {
-  background: black;
+  background: var(--color-primary);
   border: none;
-  color: white;
+  box-shadow: var(--shadow-2pd);
+  color: var(--color-primary-text);
+  z-index: 200;
 }
