@@ -7,9 +7,9 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import React from 'react';
-import './FormButton.css';
+import './Button.css';
 
-const FormButton = props => (
+const Button = props => (
   <input
     {...props}
     type="button"
@@ -18,4 +18,4 @@ const FormButton = props => (
 );
 
 /*----- Exports --------------------------------------------------------------*/
-export default FormButton;
+export default Button;

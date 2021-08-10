@@ -8,7 +8,8 @@
 /*----- Imports --------------------------------------------------------------*/
 import React, { Component } from 'react';
 import { Card } from '../components';
-import Button from './FormButton/FormButton';
+import Button from './Button/Button';
+import TextField from './TextField/TextField';
 import './Form.css';
 
 class Form extends Component {
@@ -17,13 +18,15 @@ class Form extends Component {
     return (
       <Card>
         <Card.Title>{title}</Card.Title>
-        <form className="card__form" {...rest}>{children}</form>
+        <form className="card__form" {...rest}>
+          {children}
+        </form>
       </Card>
     );
   }
 }
 
-Form.Button = Button;
+Object.assign(Form, { Button, TextField });
 
 /*----- Exports --------------------------------------------------------------*/
 export default Form;
