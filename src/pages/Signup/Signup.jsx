@@ -7,7 +7,6 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import React, { useState } from 'react';
-import './Signup.css';
 import { ErrorMessage, Form } from '../../components/components';
 import userService from '../../utils/users';
 import { useHistory } from 'react-router-dom';

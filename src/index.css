@@ -36,14 +36,17 @@
     0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
+body {
+  margin: 0;
+}
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: bold;
+}
 html {
   font-family: var(--font-copy);
   font-size: var(--size-em);
 }
-body {
-  margin: 0;
-}
-
 section {
   margin: 10em auto;
   width: 32em;

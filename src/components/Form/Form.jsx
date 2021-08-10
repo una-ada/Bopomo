@@ -12,10 +12,11 @@ import Button from './FormButton/FormButton';
 
 class Form extends Component {
   render() {
-    const { children } = this.props;
+    const { children, title, ...rest } = this.props;
     return (
       <Card>
-        <form {...this.props}>{children}</form>
+        <Card.Title>{title}</Card.Title>
+        <form {...rest}>{children}</form>
       </Card>
     );
   }

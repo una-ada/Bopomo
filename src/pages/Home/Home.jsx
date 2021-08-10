@@ -3,7 +3,7 @@ import { Form } from '../../components/components';
 
 const Home = props => {
   return (
-    <Form>
+    <Form title="Signup">
       <input type="email" name="email" required />
       <input type="password" name="password" />
       <input type="password" name="passwordConfirm" />

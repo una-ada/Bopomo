@@ -6,14 +6,22 @@
  */
 
 /*----- Imports --------------------------------------------------------------*/
-import React from 'react';
+import React, { Component } from 'react';
+import CardTitle from './CardTitle/CardTitle';
 import './Card.css';
 
-const Card = props => (
-  <div className="card" {...props}>
-    {props.children}
-  </div>
-);
+class Card extends Component {
+  render() {
+    const { children, ...rest } = this.props;
+    return (
+      <div className="card" {...rest}>
+        {children}
+      </div>
+    );
+  }
+}
+
+Card.Title = CardTitle;
 
 /*----- Exports --------------------------------------------------------------*/
 export default Card;
