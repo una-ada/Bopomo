@@ -14,25 +14,27 @@ function App() {
 
   return (
     <div className="App">
-      <Switch>
-        <Route exact path="/login">
-          <Login handleSignUpOrLogin={handleSignUpOrLogin} />
-        </Route>
-        <Route exact path="/signup">
-          <Signup handleSignUpOrLogin={handleSignUpOrLogin} />
-        </Route>
-        {user ? (
-          <>
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-            </Switch>
-          </>
-        ) : (
-          <Redirect to="/login" />
-        )}
-      </Switch>
+      <div className="content">
+        <Switch>
+          <Route exact path="/login">
+            <Login handleSignUpOrLogin={handleSignUpOrLogin} />
+          </Route>
+          <Route exact path="/signup">
+            <Signup handleSignUpOrLogin={handleSignUpOrLogin} />
+          </Route>
+          {user ? (
+            <>
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+              </Switch>
+            </>
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Switch>
+      </div>
     </div>
   );
 }
