@@ -1,3 +1,8 @@
 .card__form {
   margin: 1rem;
 }
+.form__label {
+  display: block;
+  font-weight: bold;
+  margin: 1rem 0 -0.8rem 0;
+}

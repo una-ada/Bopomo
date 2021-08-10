@@ -9,7 +9,7 @@
 import React from 'react';
 import './TextField.css';
 
-const TextField = props => {
+const TextField = ({ label, ...props }) => {
   // Function to create the responder effect
   const handleClick = ({ nativeEvent: e }) =>
     (res =>
@@ -24,7 +24,7 @@ const TextField = props => {
       // Run on next animation frame to make sure style was applied
       requestAnimationFrame(_ =>
         Object.assign(res.style, {
-          transitionDuration: '1s',
+          transitionDuration: '0.7s',
           opacity: 0,
           // Needs to get the largest possible radius from the diagonal
           webkitClipPath: `circle(${(({ width, height }) =>
@@ -39,10 +39,13 @@ const TextField = props => {
         ?.querySelector('.text-field__responder')
     );
   return (
-    <div className="text-field" onClick={handleClick}>
-      <div className="text-field__responder"></div>
-      <input className="text-field__input" {...props} />
-    </div>
+    <>
+      {label && <label className="form__label">{label}</label>}
+      <div className="text-field" onClick={handleClick}>
+        <div className="text-field__responder"></div>
+        <input className="text-field__input" {...props} />
+      </div>
+    </>
   );
 };
 
