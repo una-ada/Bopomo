@@ -1,14 +1,40 @@
+/**
+ * Bopomo main React component
+ * @author Una Ada <una@anarchy.website>
+ * @version 2021.08.09
+ * @since 2021.08.09
+ */
+/*----- Imports --------------------------------------------------------------*/
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'semantic-ui-css/semantic.min.css';
-import './index.css';
-import App from './pages/App/App';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { ProvideAuth, GuestRoute, PrivateRoute } from './utils/auth';
+import { Home, Signup, Login } from './pages/pages';
+import { Nav } from './components/components'
+import './index.css';
 
+/*----- Render App -----------------------------------------------------------*/
 ReactDOM.render(
-  <Router><App/></Router>,
-  document.getElementById('root')
+  <ProvideAuth>
+    <Router>
+      <Nav />
+      <section>
+        <Switch>
+          <GuestRoute exact path="/login">
+            <Login />
+          </GuestRoute>
+          <GuestRoute exact path="/signup">
+            <Signup />
+          </GuestRoute>
+          <PrivateRoute exact path="/">
+            <Home />
+          </PrivateRoute>
+        </Switch>
+      </section>
+    </Router>
+  </ProvideAuth>,
+  document.querySelector('#root')
 );
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

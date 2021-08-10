@@ -23,26 +23,32 @@ const createJWT = user => jwt.sign({ user }, SECRET, { expiresIn: '24h' });
 
 /*----- Export Methods -------------------------------------------------------*/
 export default {
-  signup: (req, res) =>
+  signup: (req, res, next) =>
     s3.upload(
       {
-        Bucket: process.env.BUCKET_NAME,
+        Bucket: process.env.AWS_BUCKET,
         Key: `${uuidv4()}/${req.file.originalname}`,
         Body: req.file.buffer,
       },
       async function (err, data) {
+        if (err) {
+          console.error(err);
+          return next(err);
+        }
         const user = new User({ ...req.body, photoUrl: data.Location });
+        console.log(user);
         try {
           await user.save();
-          const token = createJWT(user);
-          res.json({ token });
+          res.json({ token: createJWT(user) });
         } catch (err) {
+          console.error(err);
           res.status(400).json(err);
         }
       }
     ),
   login: async (req, res) => {
     try {
+      console.log(req.body);
       const user = await User.findOne({ email: req.body.email });
       console.log(user, ' this user in login');
       if (!user) return res.status(401).json({ err: 'bad credentials' });

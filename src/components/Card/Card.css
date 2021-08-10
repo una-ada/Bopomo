@@ -1,0 +1,14 @@
+.card {
+  background: #fff;
+  border: 1px solid black;
+  box-shadow: var(--shadow-2pd);
+  display: inline-block;
+  margin-bottom: 2rem;
+  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 100%;
+  z-index: 200;
+}
+.card--lifted {
+  box-shadow: var(--shadow-8pd);
+  z-index: 800;
+}
