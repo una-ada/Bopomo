@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { Home, Signup, Login } from '../pages';
-import { Form } from '../../components/components';
 import userService from '../../utils/users';
-
-console.log(Form);
-console.log(Signup);
 
 function App() {
   const [user, setUser] = useState(userService.getUser()),
@@ -29,7 +25,7 @@ function App() {
           <>
             <Switch>
               <Route exact path="/">
-                <Form.Button />
+                <Home />
               </Route>
             </Switch>
           </>

@@ -110,8 +110,6 @@ const Signup = props => {
       />
       <input type="submit" className="btn" value="Signup" />
       {state.error && <ErrorMessage error={state.error} />}
-      <Form />
-      <Form.Button />
     </form>
   );
 };
