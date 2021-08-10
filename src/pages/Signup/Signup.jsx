@@ -7,9 +7,9 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import React, { useState } from 'react';
-import { ErrorMessage } from '../../components/components';
+import { ErrorMessage, Form } from '../../components/components';
 import userService from '../../utils/users';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Signup = props => {
   /*----- State --------------------------------------------------------------*/
@@ -60,9 +60,9 @@ const Signup = props => {
 
   /*----- Template -----------------------------------------------------------*/
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Signup</h1>
-      <input
+    <Form title="Signup" onSubmit={handleSubmit}>
+      <Form.TextField
+        label="Username"
         type="text"
         name="username"
         placeholder="Username"
@@ -70,7 +70,8 @@ const Signup = props => {
         onChange={handleChange}
         required
       />
-      <input
+      <Form.TextField
+        label="E-mail"
         type="email"
         name="email"
         placeholder="E-mail"
@@ -78,7 +79,8 @@ const Signup = props => {
         onChange={handleChange}
         required
       />
-      <input
+      <Form.TextField
+        label="Password"
         type="password"
         name="password"
         placeholder="Password"
@@ -86,7 +88,8 @@ const Signup = props => {
         onChange={handleChange}
         required
       />
-      <input
+      <Form.TextField
+        label="Confirm Password"
         type="password"
         name="passwordConfirm"
         placeholder="Confirm Password"
@@ -107,9 +110,10 @@ const Signup = props => {
         onChange={handleFileInput}
         required
       />
-      <input type="submit" className="btn" value="Signup" />
+      <Form.Button type="submit" value="Signup" />
       {state.error && <ErrorMessage error={state.error} />}
-    </form>
+      <p>Already have an account? <Link to="/login">Login!</Link></p>
+    </Form>
   );
 };
 
