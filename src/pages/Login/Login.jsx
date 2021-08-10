@@ -7,7 +7,7 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { ErrorMessage, Form } from '../../components/components';
 import { useAuth } from '../../utils/auth';
 
@@ -69,6 +69,7 @@ const Login = () => {
       />
       <Form.Button type="submit" value="Login" />
       {state.error && <ErrorMessage error={state.error} />}
+      <p>Not a user? <Link to="/signup">Signup!</Link></p>
     </Form>
   );
 };
