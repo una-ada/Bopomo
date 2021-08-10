@@ -29,11 +29,12 @@ export function useProvideAuth() {
           reject(err);
         }
       }),
-    logout: next => {
-      userService.logout();
-      setUser({ user: null });
-      next();
-    },
+    logout: () =>
+      new Promise((resolve, reject) => {
+        userService.logout();
+        setUser(null);
+        resolve();
+      }),
   };
 }
 export function useAuth() {
