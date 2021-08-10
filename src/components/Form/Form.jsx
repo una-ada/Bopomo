@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import { Card } from '../components';
 import Button from './FormButton/FormButton';
+import './Form.css';
 
 class Form extends Component {
   render() {
@@ -16,7 +17,7 @@ class Form extends Component {
     return (
       <Card>
         <Card.Title>{title}</Card.Title>
-        <form {...rest}>{children}</form>
+        <form className="card__form" {...rest}>{children}</form>
       </Card>
     );
   }

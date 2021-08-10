@@ -4,8 +4,8 @@
   box-shadow: var(--shadow-2pd);
   display: inline-block;
   margin-bottom: 2rem;
-  padding: 1rem;
   transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 100%;
   z-index: 200;
 }
 .card--lifted {

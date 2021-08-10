@@ -3,5 +3,12 @@
   border: none;
   box-shadow: var(--shadow-2pd);
   color: var(--color-primary-text);
+  display: block;
+  height: 2rem;
+  letter-spacing: 0.1rem;
+  margin: 1rem 0;
+  padding: 0;
+  text-transform: uppercase;
+  width: 100%;
   z-index: 200;
 }
