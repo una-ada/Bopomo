@@ -1,3 +1,11 @@
+/**
+ * Login view
+ * @author Una Ada <una@anarchy.website>
+ * @version 2021.08.10
+ * @since 2021.08.10
+ */
+
+/*----- Imports --------------------------------------------------------------*/
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ErrorMessage, Form } from '../../components/components';

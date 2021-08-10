@@ -11,12 +11,14 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { ProvideAuth, GuestRoute, PrivateRoute } from './utils/auth';
 import { Home, Signup, Login } from './pages/pages';
+import { Nav } from './components/components'
 import './index.css';
 
 /*----- Render App -----------------------------------------------------------*/
 ReactDOM.render(
   <ProvideAuth>
     <Router>
+      <Nav />
       <section>
         <Switch>
           <GuestRoute exact path="/login">

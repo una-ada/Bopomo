@@ -18,6 +18,7 @@
   --color-light: #ddddddff;
 
   /*----- UI Colors ----------------------------------------------------------*/
+  --color-background: white;
   --color-text: var(--color-black);
   --color-primary: var(--color-foamy);
   --color-primary-dark: var(--color-coral);
