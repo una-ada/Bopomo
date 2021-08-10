@@ -22,6 +22,10 @@
   --color-primary-text: white;
   --color-secondary: var(--color-lotus);
 
+  /*----- Fonts --------------------------------------------------------------*/
+  --font-copy: 'Noto Sans', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+
   /*----- Sizes --------------------------------------------------------------*/
   --size-em: 11pt;
 
@@ -33,6 +37,7 @@
 }
 
 html {
+  font-family: var(--font-copy);
   font-size: var(--size-em);
 }
 body {
