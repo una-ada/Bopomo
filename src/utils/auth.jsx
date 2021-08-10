@@ -10,18 +10,13 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import { createContext, useContext, useState } from 'react';
-import { Redirect, Route, useLocation } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import userService from './users';
 
 /*----- Helper Functions -----------------------------------------------------*/
 const authCtx = createContext(),
   useProvideAuth = () => {
-    const [user, setUser] = useState(userService.getUser()),
-      handleSignUpOrLogin = () => setUser(userService.getUser()),
-      handleLogout = () => {
-        userService.logout();
-        setUser({ user: null });
-      };
+    const [user, setUser] = useState(userService.getUser());
     return {
       user,
       login: next => {

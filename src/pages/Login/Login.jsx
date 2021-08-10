@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import userService from '../../utils/users';
+import React from 'react';
 
-export default function LoginPage(props) {
-  return <h1>setup signup PAGE</h1>;
-}
+const Login = () => <h1>setup signup PAGE</h1>;
+
+export default Login;

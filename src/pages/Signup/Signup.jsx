@@ -7,7 +7,7 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import React, { useState } from 'react';
-import { ErrorMessage, Form } from '../../components/components';
+import { ErrorMessage } from '../../components/components';
 import userService from '../../utils/users';
 import { useHistory } from 'react-router-dom';
 
