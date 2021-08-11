@@ -20,11 +20,11 @@ const voteSchema = new mongoose.Schema({
   }),
   commentSchema = new mongoose.Schema(),
   metricSchema = new mongoose.Schema({
-    upm: Number,
-    xHeight: Number,
-    capHeight: Number,
+    unitsPerEm: Number,
     ascent: Number,
     descent: Number,
+    capHeight: Number,
+    xHeight: Number,
   }),
   fontSchema = new mongoose.Schema(
     {
@@ -43,7 +43,7 @@ const voteSchema = new mongoose.Schema({
           ref: 'Image',
         },
       ],
-      tags: String,
+      tags: [String],
       metrics: metricSchema,
       pairings: [
         {
@@ -51,7 +51,7 @@ const voteSchema = new mongoose.Schema({
           ref: 'Pairing',
         },
       ],
-      comments: String,
+      comments: [commentSchema],
     },
     {
       timestamps: true,
