@@ -2,7 +2,7 @@
  * Fonts Controller
  * @author Una Ada <una@anarchy.website>
  * @version 2021.08.10
- * @since 2021.08.02
+ * @since 2021.08.10
  * @module controllers/fonts
  * @see module:models/font
  * @see module:routes/fonts

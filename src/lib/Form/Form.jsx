@@ -7,7 +7,7 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import React, { Component } from 'react';
-import { Card } from '../components';
+import { Card } from '../lib';
 import Button from './Button/Button';
 import TextField from './TextField/TextField';
 import './Form.css';

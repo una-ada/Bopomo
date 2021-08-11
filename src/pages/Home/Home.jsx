@@ -1,9 +1,11 @@
 import React from 'react';
-import { Card } from '../../components/components';
+import { Form } from '../../lib/lib';
 
 const Home = props => {
   return (
-    <Card>Hello!</Card>
+    <Form title="Upload Font">
+
+    </Form>
   );
 };
 
