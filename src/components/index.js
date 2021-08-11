@@ -6,4 +6,5 @@
  */
  export {default as Nav} from './Nav/Nav';
  export {default as FontForm} from './FontForm/FontForm';
+ export {default as Feed} from './Feed/Feed';
  
