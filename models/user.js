@@ -32,6 +32,8 @@ export const VALID_SIZES = {
   HANDLE: { min: 2 ** 2, max: 2 ** 4 },
   /** @param {Object.<String,Number>} NAME Display name sizes. */
   NAME: { min: 2 ** 0, max: 2 ** 5 },
+  /** @param {Object.<String,Number>} BIO Bio sizes. */
+  BIO: { max: 2 ** 8 },
 };
 
 /** @const SALT_ROUNDS Number of rounds for bcrypt salting */
@@ -110,6 +112,17 @@ const userSchema = new mongoose.Schema(
         {
           validator: value => value.length <= VALID_SIZES.NAME.max,
           msg: `Name is more than ${VALID_SIZES.NAME.max} characters.`,
+        },
+      ],
+    },
+    bio: {
+      type: String,
+      required: false,
+      default: '',
+      validate: [
+        {
+          validator: value => value.length <= VALID_SIZES.BIO.max,
+          msg: `Bio is more than ${VALID_SIZES.BIO.max} characters.`,
         },
       ],
     },
