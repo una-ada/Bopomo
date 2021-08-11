@@ -1,7 +1,7 @@
 /**
  * Bopomo main React component
  * @author Una Ada <una@anarchy.website>
- * @version 2021.08.09
+ * @version 2021.08.11
  * @since 2021.08.09
  */
 /*----- Imports --------------------------------------------------------------*/
@@ -10,8 +10,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { ProvideAuth, GuestRoute, PrivateRoute } from './utils/auth';
-import { Home, Signup, Login } from './pages/pages';
-import { Nav } from './components/components'
+import { Home, Signup, Login } from './pages';
+import { Nav } from './components'
 import './index.css';
 
 /*----- Render App -----------------------------------------------------------*/

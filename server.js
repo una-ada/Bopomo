@@ -35,8 +35,13 @@ app.use(favicon(path.join(__dirname, 'build', 'logo--favicon.svg')));
 
 /*----- Routers --------------------------------------------------------------*/
 import userRouter from './routes/users.js';
+import fontRouter from './routes/fonts.js';
 app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api/users', userRouter);
+app.use('/api/fonts', fontRouter);
+app.use('/api', (err, req, res, next) =>
+  console.log(err) || res.status(500).send({ error: err.message })
+);
 app.use((req, res) =>
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 );
