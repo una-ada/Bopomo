@@ -17,7 +17,7 @@ const FontForm = props => {
     form: {
       name: '',
       copy: '',
-      font: '',
+      font: [],
     },
   });
 

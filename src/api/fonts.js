@@ -11,7 +11,7 @@
 import tokenService from '../utils/tokens';
 
 /*----- Constants ------------------------------------------------------------*/
-const BASE_URL = '/api/fonts';
+const BASE_URL = '/api/fonts/';
 
 export const create = body =>
   new Promise((resolve, reject) =>
@@ -21,8 +21,7 @@ export const create = body =>
       headers: {
         Authorization: `Bearer ${tokenService.getToken()}`,
       },
-    })
-      .then(res => res.json())
-      .then(font => resolve(font))
-      .catch(err => reject(err))
+    }).then(res =>
+      res.json().then(obj => (res.ok ? resolve(obj) : reject(obj)))
+    )
   );

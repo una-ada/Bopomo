@@ -38,6 +38,7 @@ export const create = (
     })
     .promise()
     .then(({ Location: file }) =>
+      console.log(file) || 
       (({ unitsPerEm, ascent, descent, capHeight, xHeight }) =>
         Font.create({
           ...body,

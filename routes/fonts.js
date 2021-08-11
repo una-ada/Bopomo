@@ -18,18 +18,20 @@ const router = Router(),
   upload = multer();
 
 /*----- Routes ---------------------------------------------------------------*/
-router.route('/').post(
-  checkUser,
-  /* Using the `.fields` function to catch multiple fields
-   * https://github.com/expressjs/multer#fieldsfields
-   */
-  upload.fields([
-    { name: 'font', maxCount: 1 },
-    // Will add in when I get the image upload stuff working
-    // { name: 'images', maxCount: 10 },
-  ]),
-  fontsCtrl.create
-);
+router
+  .route('/')
+  .post(
+    checkUser,
+    /* Using the `.fields` function to catch multiple fields
+     * https://github.com/expressjs/multer#fieldsfields
+     */
+    upload.fields([
+      { name: 'font', maxCount: 1 },
+      // Will add in when I get the image upload stuff working
+      // { name: 'images', maxCount: 10 },
+    ]),
+    fontsCtrl.create
+  );
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
