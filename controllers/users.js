@@ -23,6 +23,20 @@ const createJWT = user => jwt.sign({ user }, SECRET, { expiresIn: '24h' });
 
 /*----- Export Methods -------------------------------------------------------*/
 export default {
+  create: (req, res, next) => {
+    User.create(
+      {
+        ...req.body,
+        // This is a temporary default, will fix it up in the future
+        handle: `user${String(+new Date()).substr(2)}`,
+      },
+      (err, user) =>
+        err
+          ? console.error(err) || next(err)
+          : res.json({ token: createJWT(user) })
+    );
+  },
+  /*
   signup: (req, res, next) =>
     s3.upload(
       {
@@ -46,6 +60,7 @@ export default {
         }
       }
     ),
+  */
   login: async (req, res) => {
     try {
       console.log(req.body);
