@@ -10,20 +10,15 @@
 /*----- Imports --------------------------------------------------------------*/
 import { Router } from 'express';
 import multer from 'multer';
-import usersCtrl from '../controllers/users.js';
+import * as usersCtrl from '../controllers/users.js';
 
 /*----- Initialize -----------------------------------------------------------*/
 const router = Router(),
   upload = multer();
 
 /*----- Routes ---------------------------------------------------------------*/
-router.post('/signup', /*upload.single('photo'),*/ usersCtrl.create);
+router.post('/signup', usersCtrl.create);
 router.post('/login', usersCtrl.login);
-
-/*----- Error Handling -------------------------------------------------------*/
-router.use(function (err, req, res, next) {
-  res.status(500).send({error: err.message});
-});
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;

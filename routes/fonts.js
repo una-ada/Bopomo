@@ -10,12 +10,11 @@
 /*----- Imports --------------------------------------------------------------*/
 import { Router } from 'express';
 import multer from 'multer';
-import fontsCtrl from '../controllers/users.js';
+import fontsCtrl from '../controllers/fonts.js';
+import { checkUser } from '../controllers/users.js';
 
 /*----- Initialize -----------------------------------------------------------*/
-const checkUser = (req, res, next) =>
-    req.user !== undefined ? next() : res.sendStatus(403),
-  router = Router(),
+const router = Router(),
   upload = multer();
 
 /*----- Routes ---------------------------------------------------------------*/
@@ -30,11 +29,6 @@ router.route('/').post(
   ]),
   fontsCtrl.create
 );
-
-/*----- Error Handling -------------------------------------------------------*/
-router.use(function (err, req, res, next) {
-  res.status(500).send({ error: err.message });
-});
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;

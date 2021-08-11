@@ -21,9 +21,10 @@ const s3 = new S3();
 /*----- Private Methods ------------------------------------------------------*/
 const createJWT = user => jwt.sign({ user }, SECRET, { expiresIn: '24h' });
 
-/*----- Export Methods -------------------------------------------------------*/
-export default {
-  create: (req, res, next) =>
+/*----- Public Methods -------------------------------------------------------*/
+export const checkUser = (req, res, next) =>
+    req.user !== undefined ? next() : res.sendStatus(403),
+  create = (req, res, next) =>
     User.create(
       {
         ...req.body,
@@ -35,32 +36,7 @@ export default {
           ? console.error(err) || next(err)
           : res.json({ token: createJWT(user) })
     ),
-  /*
-  signup: (req, res, next) =>
-    s3.upload(
-      {
-        Bucket: process.env.AWS_BUCKET,
-        Key: `${uuidv4()}/${req.file.originalname}`,
-        Body: req.file.buffer,
-      },
-      async function (err, data) {
-        if (err) {
-          console.error(err);
-          return next(err);
-        }
-        const user = new User({ ...req.body, photoUrl: data.Location });
-        console.log(user);
-        try {
-          await user.save();
-          res.json({ token: createJWT(user) });
-        } catch (err) {
-          console.error(err);
-          res.status(400).json(err);
-        }
-      }
-    ),
-  */
-  login: async (req, res) => {
+  login = async (req, res) => {
     try {
       const user = await User.findOne({ email: req.body.email });
       if (!user) return res.status(401).json({ err: 'bad credentials' });
@@ -75,5 +51,4 @@ export default {
     } catch (err) {
       return res.status(401).json(err);
     }
-  },
-};
+  };
