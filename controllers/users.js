@@ -1,7 +1,7 @@
 /**
  * Users Controller
  * @author Una Ada <una@anarchy.website>
- * @version 2021.08.02
+ * @version 2021.08.10
  * @since 2021.08.02
  * @module controllers/users
  * @see module:models/user
@@ -23,6 +23,19 @@ const createJWT = user => jwt.sign({ user }, SECRET, { expiresIn: '24h' });
 
 /*----- Export Methods -------------------------------------------------------*/
 export default {
+  create: (req, res, next) =>
+    User.create(
+      {
+        ...req.body,
+        // This is a temporary default, will fix it up in the future
+        username: `user${String(+new Date()).substr(2)}`,
+      },
+      (err, user) =>
+        err
+          ? console.error(err) || next(err)
+          : res.json({ token: createJWT(user) })
+    ),
+  /*
   signup: (req, res, next) =>
     s3.upload(
       {
@@ -46,11 +59,10 @@ export default {
         }
       }
     ),
+  */
   login: async (req, res) => {
     try {
-      console.log(req.body);
       const user = await User.findOne({ email: req.body.email });
-      console.log(user, ' this user in login');
       if (!user) return res.status(401).json({ err: 'bad credentials' });
       user.comparePassword(req.body.password, (err, isMatch) => {
         if (isMatch) {

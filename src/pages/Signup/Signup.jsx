@@ -1,30 +1,27 @@
 /**
  * Signup page
  * @author Una Ada <una@anarchy.website>
- * @version 2021.08.09
+ * @version 2021.08.10
  * @since 2021.08.09
  */
 
 /*----- Imports --------------------------------------------------------------*/
 import React, { useState } from 'react';
 import { ErrorMessage, Form } from '../../components/components';
-import userService from '../../utils/users';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../utils/auth';
 
 const Signup = props => {
   /*----- State --------------------------------------------------------------*/
   const [state, setState] = useState({
       error: '',
       form: {
-        username: '',
         email: '',
         password: '',
         passwordConfirm: '',
-        bio: '',
       },
-      file: '',
     }),
-    history = useHistory();
+    auth = useAuth();
 
   /*----- Handler Functions --------------------------------------------------*/
   const handleChange = e =>
@@ -35,41 +32,23 @@ const Signup = props => {
           [e.target.name]: e.target.value,
         },
       }),
-    handleFileInput = e =>
-      setState({
-        ...state,
-        file: e.target.files[0],
-      }),
     handleSubmit = async e => {
       e.preventDefault();
-      const formData = new FormData();
-      formData.append('photo', state.file);
-      for (let k in state.form) formData.append(k, state.form[k]);
-      try {
-        await userService.signup(formData);
-        props.handleSignUpOrLogin();
-        history.push('/');
-      } catch (err) {
-        console.error(err.message);
-        setState({
-          ...state,
-          error: err.message,
-        });
-      }
+      auth
+        .signup(state.form)
+        .catch(
+          ({error}) =>
+            console.log(error) ||
+            setState({
+              ...state,
+              error: error.split(':').pop(),
+            })
+        );
     };
 
   /*----- Template -----------------------------------------------------------*/
   return (
     <Form title="Signup" onSubmit={handleSubmit}>
-      <Form.TextField
-        label="Username"
-        type="text"
-        name="username"
-        placeholder="Username"
-        value={state.form.username}
-        onChange={handleChange}
-        required
-      />
       <Form.TextField
         label="E-mail"
         type="email"
@@ -97,22 +76,11 @@ const Signup = props => {
         onChange={handleChange}
         required
       />
-      <textarea
-        label="bio"
-        name="bio"
-        placeholder="Tell people about yourself..."
-        onChange={handleChange}
-      ></textarea>
-      <input
-        type="file"
-        name="photo"
-        placeholder="Upload Image"
-        onChange={handleFileInput}
-        required
-      />
       <Form.Button type="submit" value="Signup" />
       {state.error && <ErrorMessage error={state.error} />}
-      <p>Already have an account? <Link to="/login">Login!</Link></p>
+      <p>
+        Already have an account? <Link to="/login">Login!</Link>
+      </p>
     </Form>
   );
 };
