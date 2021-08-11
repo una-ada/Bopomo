@@ -25,3 +25,12 @@ export const create = body =>
       res.json().then(obj => (res.ok ? resolve(obj) : reject(obj)))
     )
   );
+
+export const index = () =>
+  new Promise((resolve, reject) =>
+    fetch(BASE_URL, {
+      method: 'GET',
+    }).then(res =>
+      res.json().then(obj => (res.ok ? resolve(obj) : reject(obj)))
+    )
+  );
