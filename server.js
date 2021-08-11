@@ -37,15 +37,9 @@ app.use(favicon(path.join(__dirname, 'build', 'logo--favicon.svg')));
 import userRouter from './routes/users.js';
 app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api/users', userRouter);
-app.use('/', (req, res) =>
+app.use((req, res) =>
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 );
-
-/*----- Error Handling -------------------------------------------------------*/
-app.use(function (err, req, res, next) {
-  console.error(err.stack)
-  res.status(500).json(error);
-})
 
 /*----- Server Helper Functions ----------------------------------------------*/
 function normalizePort(val) {

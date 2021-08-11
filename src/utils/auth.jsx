@@ -19,6 +19,13 @@ export function useProvideAuth() {
   const [user, setUser] = useState(userService.getUser());
   return {
     user,
+    signup: user =>
+      new Promise((resolve, reject) => {
+        userService
+          .signup(user)
+          .then(() => setUser(userService.getUser()) || resolve())
+          .catch(err => reject(err));
+      }),
     login: cred =>
       new Promise(async (resolve, reject) => {
         try {

@@ -20,5 +20,11 @@ const router = Router(),
 router.post('/signup', /*upload.single('photo'),*/ usersCtrl.create);
 router.post('/login', usersCtrl.login);
 
+/*----- Error Handling -------------------------------------------------------*/
+router.use(function (err, req, res, next) {
+  console.error(err)
+  res.status(500, err._message);
+})
+
 /*----- Exports --------------------------------------------------------------*/
 export default router;

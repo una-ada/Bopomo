@@ -14,15 +14,20 @@ import tokenService from './tokens';
 const BASE_URL = '/api/users/',
   userUtils = {
     signup: user =>
-      fetch(BASE_URL + 'signup', {
-        method: 'POST',
-        body: user,
-      })
-        .then(res => {
-          if (res.ok) return res.json();
-          else throw new Error('Email taken!');
+      new Promise((resolve, reject) =>
+        fetch(BASE_URL + 'signup', {
+          method: 'POST',
+          headers: new Headers({ 'Content-Type': 'application/json' }),
+          body: JSON.stringify(user),
         })
-        .then(({ token }) => tokenService.setToken(token)),
+          .then(res => {
+            if (res.ok) return res;
+            throw new Error(res.statusText);
+          })
+          .then(res => res.json())
+          .then(({ token }) => tokenService.setToken(token) || resolve())
+          .catch(err => reject(err))
+      ),
     login: cred =>
       fetch(BASE_URL + 'login', {
         method: 'POST',
