@@ -24,7 +24,7 @@ export default {
       .upload({
         Bucket: process.env.AWS_BUCKET,
         Key: `${uuidv4()}/${req.file.originalname}`,
-        Body: req.file.buffer,
+        Body: req.files.font[0].buffer,
       })
       .promise()
       .then(data =>
@@ -40,7 +40,7 @@ export default {
               capHeight,
               xHeight,
             },
-          }))(fontkit.create(req.file.buffer))
+          }))(fontkit.create(req.files.font[0].buffer))
       )
       .then(font => res.json(font))
       .catch(err => console.error(err) || next(err)),
