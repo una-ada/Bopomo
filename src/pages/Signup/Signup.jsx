@@ -7,7 +7,7 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import React, { useState } from 'react';
-import { ErrorMessage, Form } from '../../lib';
+import { ErrorMessage, Form } from '../../elements';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../utils/auth';
 
@@ -32,7 +32,7 @@ const Signup = props => {
           [e.target.name]: e.target.value,
         },
       }),
-    handleSubmit = async e => {
+    handleSubmit = e => {
       e.preventDefault();
       auth
         .signup(state.form)

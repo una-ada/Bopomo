@@ -29,14 +29,6 @@ const BASE_URL = '/api/users/',
                   : reject(obj)
               )
           )
-        // .then(res => {
-        //   if (res.ok) return res;
-        //   console.log(res);
-        //   throw new Error(res.statusText);
-        // })
-        // .then(res => res.json())
-        // .then(({ token }) => tokenService.setToken(token) || resolve())
-        // .catch(err => reject(err))
       ),
     login: cred =>
       fetch(BASE_URL + 'login', {

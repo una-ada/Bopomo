@@ -1,12 +1,8 @@
 import React from 'react';
-import { Form } from '../../lib';
+import { FontForm } from '../../components';
 
 const Home = props => {
-  return (
-    <Form title="Upload Font">
-
-    </Form>
-  );
+  return <FontForm />;
 };
 
 export default Home;
