@@ -22,8 +22,9 @@ const voteSchema = new mongoose.Schema({
   metricSchema = new mongoose.Schema({
     upm: Number,
     xHeight: Number,
-    ascender: Number,
-    descender: Number,
+    capHeight: Number,
+    ascent: Number,
+    descent: Number,
   }),
   fontSchema = new mongoose.Schema(
     {
