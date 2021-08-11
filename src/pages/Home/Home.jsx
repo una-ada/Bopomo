@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form } from '../../lib/lib';
+import { Form } from '../../lib';
 
 const Home = props => {
   return (

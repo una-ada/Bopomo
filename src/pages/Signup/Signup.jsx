@@ -7,7 +7,7 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import React, { useState } from 'react';
-import { ErrorMessage, Form } from '../../lib/lib';
+import { ErrorMessage, Form } from '../../lib';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../utils/auth';
 

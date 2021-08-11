@@ -8,7 +8,7 @@
 /*----- Imports --------------------------------------------------------------*/
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { ErrorMessage, Form } from '../../lib/lib';
+import { ErrorMessage, Form } from '../../lib';
 import { useAuth } from '../../utils/auth';
 
 const Login = () => {
