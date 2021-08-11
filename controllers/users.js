@@ -28,7 +28,7 @@ export default {
       {
         ...req.body,
         // This is a temporary default, will fix it up in the future
-        handle: `user${String(+new Date()).substr(2)}`,
+        username: `user${String(+new Date()).substr(2)}`,
       },
       (err, user) =>
         err
@@ -63,7 +63,6 @@ export default {
   login: async (req, res) => {
     try {
       const user = await User.findOne({ email: req.body.email });
-      console.log(user, ' this user in login');
       if (!user) return res.status(401).json({ err: 'bad credentials' });
       user.comparePassword(req.body.password, (err, isMatch) => {
         if (isMatch) {
