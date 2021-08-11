@@ -17,6 +17,7 @@
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "fontkit": "^1.8.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.8",
     "morgan": "^1.10.0",
