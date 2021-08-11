@@ -18,30 +18,40 @@ import S3 from 'aws-sdk/clients/s3.js';
 const s3 = new S3();
 
 /*----- Export Methods -------------------------------------------------------*/
-export default {
-  create: (req, res, next) =>
-    s3
-      .upload({
-        Bucket: process.env.AWS_BUCKET,
-        Key: `${uuidv4()}/${req.file.originalname}`,
-        Body: req.files.font[0].buffer,
-      })
-      .promise()
-      .then(data =>
-        (({ unitsPerEm, ascent, descent, capHeight, xHeight }) =>
-          Font.create({
-            ...req.body,
-            user: req.user,
-            file: data.Location,
-            metrics: {
-              unitsPerEm,
-              ascent,
-              descent,
-              capHeight,
-              xHeight,
-            },
-          }))(fontkit.create(req.files.font[0].buffer))
-      )
-      .then(font => res.json(font))
-      .catch(err => console.error(err) || next(err)),
-};
+export const create = (
+  {
+    user,
+    body,
+    // Complex destructuring to get the single font file as a named variable!
+    files: {
+      font: [font],
+    },
+  },
+  res,
+  next
+) =>
+  s3
+    .upload({
+      Bucket: process.env.AWS_BUCKET,
+      Key: `${uuidv4()}/${font.originalname}`,
+      Body: font.buffer,
+    })
+    .promise()
+    .then(({ Location: file }) =>
+      (({ unitsPerEm, ascent, descent, capHeight, xHeight }) =>
+        Font.create({
+          ...body,
+          user: user,
+          file,
+          copyRich: body.copy,
+          metrics: {
+            unitsPerEm,
+            ascent,
+            descent,
+            capHeight,
+            xHeight,
+          },
+        }))(fontkit.create(font.buffer))
+    )
+    .then(font => res.json(font))
+    .catch(err => console.error(err) || next(err));

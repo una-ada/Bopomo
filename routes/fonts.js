@@ -10,7 +10,7 @@
 /*----- Imports --------------------------------------------------------------*/
 import { Router } from 'express';
 import multer from 'multer';
-import fontsCtrl from '../controllers/fonts.js';
+import * as fontsCtrl from '../controllers/fonts.js';
 import { checkUser } from '../controllers/users.js';
 
 /*----- Initialize -----------------------------------------------------------*/
@@ -25,6 +25,7 @@ router.route('/').post(
    */
   upload.fields([
     { name: 'font', maxCount: 1 },
+    // Will add in when I get the image upload stuff working
     // { name: 'images', maxCount: 10 },
   ]),
   fontsCtrl.create
