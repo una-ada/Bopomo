@@ -8,6 +8,7 @@
 /*----- Imports --------------------------------------------------------------*/
 import React, { useState } from 'react';
 import { ErrorMessage, Form } from '../../elements';
+import { fonts } from '../../api';
 
 const FontForm = props => {
   /*----- State --------------------------------------------------------------*/
@@ -16,8 +17,8 @@ const FontForm = props => {
     form: {
       name: '',
       copy: '',
+      font: '',
     },
-    file: '',
   });
 
   /*----- Handler Functions --------------------------------------------------*/
@@ -29,23 +30,61 @@ const FontForm = props => {
           [e.target.name]: e.target.value,
         },
       }),
-    handleSubmit = e => {
-      e.preventDefault();
-      /*
-      auth
-        .signup(state.form)
+    handleFileInput = e => {
+      setState({
+        ...state,
+        form: {
+          ...state.form,
+          font: e.target.files[0],
+        },
+      });
+    },
+    handleSubmit = e =>
+      e.preventDefault() ||
+      fonts
+        .create(
+          Object.keys(state.form).reduce(
+            (acc, k) => acc.append(k, state.form[k]) || acc,
+            new FormData()
+          )
+        )
         .catch(
-          ({error}) =>
+          ({ error }) =>
             console.log(error) ||
             setState({
               ...state,
-              error: error.split(':').pop(),
+              error,
             })
         );
-      */
-    };
 
-  return <Form title="Upload Font" onSubmit={handleSubmit}></Form>;
+  return (
+    <Form title="Upload Font" onSubmit={handleSubmit}>
+      <input
+        type="file"
+        name="font"
+        placeholder="Upload font..."
+        onChange={handleFileInput}
+        required
+      />
+      <Form.TextField
+        label="Name"
+        type="name"
+        name="name"
+        placeholder="Font Name"
+        value={state.form.name}
+        onChange={handleChange}
+        required
+      />
+      <textarea
+        name="copy"
+        placeholder="Talk about your font!"
+        value={state.form.copy}
+        onChange={handleChange}
+      ></textarea>
+      <Form.Button type="submit" value="Upload" />
+      {state.error && <ErrorMessage error={state.error} />}
+    </Form>
+  );
 };
 
 export default FontForm;
