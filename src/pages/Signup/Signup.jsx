@@ -1,7 +1,7 @@
 /**
  * Signup page
  * @author Una Ada <una@anarchy.website>
- * @version 2021.08.09
+ * @version 2021.08.10
  * @since 2021.08.09
  */
 

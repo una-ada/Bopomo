@@ -1,7 +1,7 @@
 /**
  * User service methods.
  * @author Una Ada <una@anarhy.website>
- * @version 2021.08.09
+ * @version 2021.08.10
  * @since 2021.08.09
  * @module utils/users
  * @see module:utils/tokens

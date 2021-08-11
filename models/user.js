@@ -1,7 +1,7 @@
 /**
  * User Schema
  * @author Una Ada <una@anarchy.website>
- * @version 2021.08.02
+ * @version 2021.08.10
  * @since 2021.08.02
  * @module models/user
  * @see module:routes/users
