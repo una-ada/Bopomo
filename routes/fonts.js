@@ -20,6 +20,7 @@ const router = Router(),
 /*----- Routes ---------------------------------------------------------------*/
 router
   .route('/')
+  .get()
   .post(
     checkUser,
     /* Using the `.fields` function to catch multiple fields
@@ -27,8 +28,6 @@ router
      */
     upload.fields([
       { name: 'font', maxCount: 1 },
-      // Will add in when I get the image upload stuff working
-      // { name: 'images', maxCount: 10 },
     ]),
     fontsCtrl.create
   );

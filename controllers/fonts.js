@@ -56,3 +56,8 @@ export const create = (
     )
     .then(font => res.json(font))
     .catch(err => console.error(err) || next(err));
+
+export const index = (req, res, next) =>
+  Font.find()
+    .then(fonts => res.json(fonts))
+    .catch(err => console.error(err) || next(err));
