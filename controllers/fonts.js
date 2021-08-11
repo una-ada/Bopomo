@@ -61,6 +61,5 @@ export const index = (req, res, next) =>
   Font.find({})
     .populate('user')
     .exec((err, fonts) =>
-    console.log(fonts) ||
       err ? console.error(err) || next(err) : res.json(fonts)
     );

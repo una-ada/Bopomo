@@ -7,14 +7,12 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import React from 'react';
-import { Card } from '../../elements';
+import { Font } from '../../components';
 
 const Feed = ({ fonts }) => (
   <>
     {fonts.map(font => (
-      <Card key={font._id}>
-        <h1>{font.name}</h1>
-      </Card>
+      <Font key={font._id} font={font} />
     ))}
   </>
 );

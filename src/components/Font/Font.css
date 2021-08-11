@@ -1,0 +1,6 @@
+.font__user,
+.font__title,
+.font__body {
+  display: block;
+  margin: 1rem;
+}
