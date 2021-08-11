@@ -8,8 +8,8 @@
 /*----- Imports --------------------------------------------------------------*/
 import React, { useState } from 'react';
 import { ErrorMessage, Form } from '../../components/components';
-import userService from '../../utils/users';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../utils/auth';
 
 const Signup = props => {
   /*----- State --------------------------------------------------------------*/
@@ -21,7 +21,7 @@ const Signup = props => {
         passwordConfirm: '',
       },
     }),
-    history = useHistory();
+    auth = useAuth();
 
   /*----- Handler Functions --------------------------------------------------*/
   const handleChange = e =>
@@ -34,15 +34,14 @@ const Signup = props => {
       }),
     handleSubmit = async e => {
       e.preventDefault();
-      userService
+      auth
         .signup(state.form)
-        .then(() => history.push('/'))
         .catch(
-          err =>
-            console.error(err.message) ||
+          ({error}) =>
+            console.log(error) ||
             setState({
               ...state,
-              error: err.message,
+              error: error.split(':').pop(),
             })
         );
     };

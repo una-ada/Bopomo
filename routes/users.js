@@ -22,9 +22,8 @@ router.post('/login', usersCtrl.login);
 
 /*----- Error Handling -------------------------------------------------------*/
 router.use(function (err, req, res, next) {
-  console.error(err)
-  res.status(500, err._message);
-})
+  res.status(500).send({error: err.message});
+});
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
