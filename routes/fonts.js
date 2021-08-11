@@ -20,15 +20,13 @@ const router = Router(),
 /*----- Routes ---------------------------------------------------------------*/
 router
   .route('/')
-  .get()
+  .get(fontsCtrl.index)
   .post(
     checkUser,
     /* Using the `.fields` function to catch multiple fields
      * https://github.com/expressjs/multer#fieldsfields
      */
-    upload.fields([
-      { name: 'font', maxCount: 1 },
-    ]),
+    upload.fields([{ name: 'font', maxCount: 1 }]),
     fontsCtrl.create
   );
 
