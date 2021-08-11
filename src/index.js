@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { ProvideAuth, GuestRoute, PrivateRoute } from './utils/auth';
 import { Home, Signup, Login } from './pages';
-import { Nav } from './lib'
+import { Nav } from './components'
 import './index.css';
 
 /*----- Render App -----------------------------------------------------------*/
