@@ -75,12 +75,13 @@ const FontForm = props => {
         onChange={handleChange}
         required
       />
-      <textarea
+      <Form.TextArea
+        label="Description"
         name="copy"
         placeholder="Talk about your font!"
         value={state.form.copy}
         onChange={handleChange}
-      ></textarea>
+      />
       <Form.Button type="submit" value="Upload" />
       {state.error && <ErrorMessage error={state.error} />}
     </Form>

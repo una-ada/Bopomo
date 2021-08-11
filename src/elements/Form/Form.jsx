@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import { Card } from '..';
 import Button from './Button/Button';
 import TextField from './TextField/TextField';
+import TextArea from './TextArea/TextArea';
 import './Form.css';
 
 class Form extends Component {
@@ -26,7 +27,7 @@ class Form extends Component {
   }
 }
 
-Object.assign(Form, { Button, TextField });
+Object.assign(Form, { Button, TextField, TextArea });
 
 /*----- Exports --------------------------------------------------------------*/
 export default Form;

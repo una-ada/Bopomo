@@ -43,6 +43,7 @@ export const create = (
           ...body,
           user: user,
           file,
+          // Thinking of using `marked` and `sanitize-html` to make the rich
           copyRich: body.copy,
           metrics: {
             unitsPerEm,
