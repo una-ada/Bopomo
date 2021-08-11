@@ -1,7 +1,7 @@
 /**
  * Fonts Controller
  * @author Una Ada <una@anarchy.website>
- * @version 2021.08.10
+ * @version 2021.08.11
  * @since 2021.08.10
  * @module controllers/fonts
  * @see module:models/font
@@ -38,7 +38,6 @@ export const create = (
     })
     .promise()
     .then(({ Location: file }) =>
-      console.log(file) || 
       (({ unitsPerEm, ascent, descent, capHeight, xHeight }) =>
         Font.create({
           ...body,
