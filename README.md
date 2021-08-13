@@ -1,39 +1,55 @@
-## Setup 
+# Bopomo
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+A social platform (full stack MERN application) to share free web fonts with
+full technical specifications for ease of use.
 
+## Getting Started
 
-#### Setup your git repo
+Open the deployed application on Heroku at [bopomo.herokuapp.com][1] which will
+direct you to a Sign In page with a link to a Sign Up page for new users.
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2.  Then follow the directions on github that says ```…or create a new repository on the command line```
+Once logged in, you'll see an index of posted fonts and a form to upload new
+font files.
 
-it should look like this
+## Solutions
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be
-git push -u origin master
-```
+Bopomo is a MERN stack application hosted on Heroku and MonogoDB atlas via a GCP
+cluster. Server functionality is handled by a REST API written in ES2015
+(JavaScript) with the Express.js framework.
 
-#### Setup the App
+## Planning
 
-```npm install```
+User stories following a "AAU I want to &lt;action&gt;, because &lt;reason&gt;"
+format and sorted by milestones are stored as cards on a [Trello board][2]. Said
+cards are also linked to GitHub issues on this repo for more thorough planning
+within contributions.
 
-*DOTENV*
+The database is planned with an ERD saved as a [Lucid document][3] using the
+crow's foot ERD template.
 
-`touch .env`
+Wireframes are currently sketches that can be found in the [docs/img][4] folder
+on this repo.
 
-add your variables
+## Next Steps
 
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
+Future plans for development include:
 
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+- More user interaction
+  - Comments on fonts
+  - Comment replies
+  - Comment votes
+  - Following users
+  - Shared font pairings
+- Integrations
+  - Repo links on fonts
+  - Continuous integration font updates
+  - OAuth signup and sign in
+- Security options
+  - Password updates
+  - Locked/private accounts
+  - Blocking users
+  - Disabling comments on fonts
+
+[1]: https://bopomo.herokuapp.com/
+[2]: https://trello.com/b/ifgO1H27/bopomo
+[3]: https://lucid.app/lucidchart/5e3370f4-9a25-4409-9e2c-28b8849a83c0/view
