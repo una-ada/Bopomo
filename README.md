@@ -1,5 +1,8 @@
 # Bopomo
 
+[![dependencies Status](https://status.david-dm.org/gh/una-ada/bopomo.svg)](https://david-dm.org/una-ada/bopomo)
+[![wakatime](https://wakatime.com/badge/github/una-ada/Bopomo.svg)](https://wakatime.com/badge/github/una-ada/Bopomo)
+
 A social platform (full stack MERN application) to share free web fonts with
 full technical specifications for ease of use.
 
@@ -53,3 +56,4 @@ Future plans for development include:
 [1]: https://bopomo.herokuapp.com/
 [2]: https://trello.com/b/ifgO1H27/bopomo
 [3]: https://lucid.app/lucidchart/5e3370f4-9a25-4409-9e2c-28b8849a83c0/view
+[4]: /docs/img
