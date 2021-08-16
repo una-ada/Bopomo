@@ -29,7 +29,7 @@ router
     upload.fields([{ name: 'font', maxCount: 1 }]),
     fontsCtrl.create
   );
-router.route('/:id').get(fontsCtrl.findBuId);
+router.route('/:id').get(fontsCtrl.findById);
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
