@@ -27,7 +27,7 @@ class Font extends Component {
 
   render() {
     const { id, ...rest } = this.props,
-      { font, loading, error } = this.state;
+      { font, loading } = this.state;
     return loading ? (
       <div></div>
     ) : (
@@ -42,4 +42,5 @@ class Font extends Component {
 
 Object.assign(Font, { Preview });
 
+/*----- Exports --------------------------------------------------------------*/
 export default Font;
