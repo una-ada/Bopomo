@@ -30,7 +30,7 @@ ReactDOM.render(
           <PrivateRoute exact path="/">
             <Home />
           </PrivateRoute>
-          <Route path="/post/:id">
+          <Route path="/font/:id">
             <Show />
           </Route>
         </Switch>

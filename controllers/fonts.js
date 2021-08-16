@@ -69,7 +69,7 @@ export const findById = (req, res, next) =>
     .populate('user')
     .exec((err, font) =>
       err
-        ? console.err(err) || next(err)
+        ? console.error(err) || next(err)
         : font
         ? res.json(font)
         : res.status(404).json({ error: 'Font not found' })
