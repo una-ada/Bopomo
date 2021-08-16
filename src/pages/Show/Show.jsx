@@ -6,30 +6,16 @@
  */
 
 /*----- Imports --------------------------------------------------------------*/
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Card } from '../../elements';
-import { useAuth } from '../../utils/auth';
-import { fonts as fontsAPI } from '../../api';
+import { Font } from '../../components';
 
 const Show = props => {
   /*----- State --------------------------------------------------------------*/
-  const [state, setState] = useState({
-      error: '',
-      font: {},
-    }),
-    { id } = useParams();
-
-  /*----- Handler Functions --------------------------------------------------*/
-  const getFont = () =>
-    fontsAPI
-      .show(id)
-      .then(font => console.log(font) || setState({ ...state, font }))
-      .catch(err => console.error(err) || setState({ ...state, error: err }));
-  useEffect(getFont, [id]);
+  const { id } = useParams();
 
   /*----- Template -----------------------------------------------------------*/
-  return <Card>Test {state.font.name}</Card>;
+  return <Font id={id} />;
 };
 
 /*----- Exports --------------------------------------------------------------*/
