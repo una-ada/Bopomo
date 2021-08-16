@@ -12,7 +12,7 @@ import { Font } from '../../components';
 const Feed = ({ fonts }) => (
   <>
     {fonts.map(font => (
-      <Font key={font._id} font={font} />
+      <Font.Preview key={font._id} font={font} />
     ))}
   </>
 );

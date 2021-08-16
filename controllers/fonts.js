@@ -1,7 +1,7 @@
 /**
  * Fonts Controller
  * @author Una Ada <una@anarchy.website>
- * @version 2021.08.11
+ * @version 2021.08.16
  * @since 2021.08.10
  * @module controllers/fonts
  * @see module:models/font
@@ -62,4 +62,15 @@ export const index = (req, res, next) =>
     .populate('user')
     .exec((err, fonts) =>
       err ? console.error(err) || next(err) : res.json(fonts)
+    );
+
+export const findById = (req, res, next) =>
+  Font.findById(req.params.id)
+    .populate('user')
+    .exec((err, font) =>
+      err
+        ? console.error(err) || next(err)
+        : font
+        ? res.json(font)
+        : res.status(404).json({ error: 'Font not found' })
     );
