@@ -34,3 +34,12 @@ export const index = () =>
       res.json().then(obj => (res.ok ? resolve(obj) : reject(obj)))
     )
   );
+
+export const show = id =>
+  new Promise((resolve, reject) =>
+    fetch(BASE_URL + id, {
+      method: 'GET',
+    }).then(res =>
+      res.json().then(obj => (res.ok ? resolve(obj) : reject(obj)))
+    )
+  );
