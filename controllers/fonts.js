@@ -63,3 +63,14 @@ export const index = (req, res, next) =>
     .exec((err, fonts) =>
       err ? console.error(err) || next(err) : res.json(fonts)
     );
+
+export const findById = (req, res, next) =>
+  Font.findById(req.params.id)
+    .populate('user')
+    .exec((err, font) =>
+      err
+        ? console.err(err) || next(err)
+        : font
+        ? res.json(font)
+        : res.status(404).json({ error: 'Font not found' })
+    );
