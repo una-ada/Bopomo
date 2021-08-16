@@ -7,11 +7,11 @@
 /*----- Imports --------------------------------------------------------------*/
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import { ProvideAuth, GuestRoute, PrivateRoute } from './utils/auth';
-import { Home, Signup, Login } from './pages';
-import { Nav } from './components'
+import { Home, Signup, Login, Show } from './pages';
+import { Nav } from './components';
 import './index.css';
 
 /*----- Render App -----------------------------------------------------------*/
@@ -30,6 +30,9 @@ ReactDOM.render(
           <PrivateRoute exact path="/">
             <Home />
           </PrivateRoute>
+          <Route path="/post/:id">
+            <Show />
+          </Route>
         </Switch>
       </section>
     </Router>
