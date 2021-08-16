@@ -1,7 +1,7 @@
 /**
  * Fonts API router
  * @author Una Ada <una@anarchy.website>
- * @version 2021.08.10
+ * @version 2021.08.16
  * @since 2021.08.10
  * @module routes/fonts
  * @see modules:models/font
@@ -29,6 +29,7 @@ router
     upload.fields([{ name: 'font', maxCount: 1 }]),
     fontsCtrl.create
   );
+router.route('/:id').get(fontsCtrl.findBuId);
 
 /*----- Exports --------------------------------------------------------------*/
 export default router;
